@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOM Exercises</title>
+  </head>
+  <body>
+    <button onclick="createWindow()">Create Window</button>
+    <button onclick="resizeWindow()">Resize Window</button>
+    <button onclick="newLocation()">Click to Leave</button>
+    <button onclick="loadHistoryEntries()">Click for History Entries</button>
+    <button onclick="setTimeout(startTimer, 3000)">Click for Timer</button>
+    <script>
+      //exercise 1
+      let newWindow;
+
+      function createWindow() {
+        newWindow = window.open("", "", "width=250, height=250");
+      }
+
+      function resizeWindow() {
+        newWindow.resizeTo(600, 900);
+      }
+
+      //exercise 2
+      function newLocation() {
+        window.location.assign(
+          "https://www.w3schools.com/js/js_window_location.asp"
+        );
+      }
+
+      //exercise 3
+      function loadHistoryEntries() {
+        const numberOfEntries = history.length;
+        console.log("You visited: " + numberOfEntries);
+      }
+
+      //exercise 4
+      window.addEventListener("load", function () {
+        alert("Hey, page is loaded!");
+      });
+
+      //exercise 5
+      function startTimer() {
+        alert("Time is up.");
+      }
+    </script>
+  </body>
+</html>
