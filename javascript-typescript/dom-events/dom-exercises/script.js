@@ -2,7 +2,7 @@
 const title = document.getElementById("title");
 const changeButton = document.getElementById("change-btn");
 const listForm = document.getElementById("list-form");
-const inputField = document.getElementById("input-value");
+const inputValue = document.getElementById("input-value");
 const list = document.getElementById("list");
 const printInput = document.getElementById("print-input");
 const mouseOverElement = document.getElementById("mouseover");
@@ -17,18 +17,18 @@ function changeText() {
 function addListItem(event) {
   event.preventDefault();
 
-  const inputValue = inputField.value.trim();
-  if (!inputValue) {
-    alert("Please write something.");
+  let value = inputValue.value;
+  if (value === "") {
+    alert("Please add a task");
     return;
   }
 
   const listItem = document.createElement("li");
   listItem.classList.add("list-item");
-  listItem.textContent = inputValue;
+  listItem.textContent = value;
 
   list.appendChild(listItem);
-  inputField.value = "";
+  inputValue.value = "";
 }
 
 // exercise 3 - remove list item
@@ -40,9 +40,9 @@ list.addEventListener("click", function (event) {
 });
 
 // exercise 4 - display input value
-function getInputChanges() {
-  printInput.innerText = inputField.value;
-}
+inputValue.addEventListener("input", function () {
+  printInput.innerText = inputValue.value;
+});
 
 // exercise 5 - toggle background color
 function toggleBackgroundColor(isOriginalColor) {
@@ -54,7 +54,6 @@ function toggleBackgroundColor(isOriginalColor) {
 // event listeners
 changeButton.addEventListener("click", changeText);
 listForm.addEventListener("submit", addListItem);
-inputField.addEventListener("input", getInputChanges);
 mouseOverElement.addEventListener("mouseover", () =>
   toggleBackgroundColor(false)
 );
