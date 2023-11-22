@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+h1 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+button {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.instruction {
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.list-item:hover {
+  cursor: pointer;
+}
+
+#mouseover {
+  width: 600px;
+  height: 100px;
+  background-color: darksalmon;
+}
