@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery Exercises</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h2>This is a JQuery exercise.</h2>
+    <button id="change-text">Click to Change</button>
+
+    <ul id="list"></ul>
+    <button id="add-item">Click to Add</button>
+
+    <script>
+      $(document).ready(function () {
+        // exercise 1
+        $("#change-text").on("click", function () {
+          $("h2").text("I changed!");
+          $("#change-text").text("You clicked");
+        });
+
+        // exercise 2
+        $("#add-item").click(function () {
+          const itemCount = $("#list li").length + 1;
+          $("#list").append("<li>Item " + itemCount + "</li>");
+        });
+
+        // exercise 3
+        $("#list").on("click", "li", function () {
+          $(this).remove();
+        });
+      });
+    </script>
+  </body>
+</html>
