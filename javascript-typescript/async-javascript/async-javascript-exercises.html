@@ -71,13 +71,13 @@
 
       // exercise 5
       async function waitForPromise() {
-        const promise = new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve("Another promise resolved!");
-          }, 3000);
-        });
-
         try {
+          const promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve("Another promise resolved!");
+            }, 3000);
+          });
+
           const message = await promise;
           console.log(message);
         } catch (error) {
