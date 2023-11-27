@@ -10,7 +10,11 @@
     <h1>Beers</h1>
     <ul id="beers-list"></ul>
     <button id="fetch-beers">Fetch Beers</button>
-    <p id="message">Wait 5 seconds.</p>
+    <p id="delay-message">Wait 5 seconds.</p>
+    <p id="loop-message"></p>
+    <p id="date"></p>
+    <p id="promise-message"></p>
+    <p id="async-message"></p>
 
     <script>
       // exercise 1
@@ -43,25 +47,47 @@
         .addEventListener("click", getBeers);
 
       // exercise 2
-      setTimeout(function () {
-        newMessage("You've waited 5 seconds!");
+      setTimeout(() => {
+        const newMessage = "You've waited 5 seconds!";
+        document.getElementById("delay-message").textContent = newMessage;
       }, 5000);
 
-      function newMessage(message) {
-        document.getElementById("message").textContent = message;
-      }
-
       // exercise 3
-      setInterval(function () {
-        loopedAlert("Hello!");
-      }, 10000);
+      setInterval(() => {
+        const currentDate = new Date();
+        const dateDisplay = document.getElementById("date");
+        dateDisplay.textContent = currentDate;
+      }, 1000);
 
-      function loopedAlert(message) {
-        console.log("Hey! This is an alert.");
-        alert("Hey! This is an alert.");
-      }
+      setInterval(() => {
+        const loopedMessage = document.getElementById("loop-message");
+        loopedMessage.textContent += "What's up? ";
+      }, 1000);
 
       // exercise 4
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Promise resolved!");
+        }, 3000);
+      }).then((message) => console.log(message));
+
+      // exercise 5
+      async function waitForPromise() {
+        const promise = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("Another promise resolved!");
+          }, 3000);
+        });
+
+        try {
+          const message = await promise;
+          console.log(message);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      waitForPromise();
     </script>
   </body>
 </html>
