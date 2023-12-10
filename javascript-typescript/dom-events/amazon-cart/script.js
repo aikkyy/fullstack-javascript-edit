@@ -1,3 +1,7 @@
+//loading spinner
+const spinner = document.querySelector(".spinner");
+spinner.style.display = "block";
+
 // 1. fetch random item data from API
 async function fetchDataAsync() {
   let response = await fetch("https://fakestoreapi.com/products");
@@ -21,6 +25,11 @@ function updateTotalPrice() {
 
 // 2. update item details
 fetchDataAsync().then((products) => {
+  //hide spinner when data is fetched
+  spinner.style.display = "none";
+  //display HTML elements when data is fetched
+  document.querySelector(".main-content").style.display = "block";
+
   const itemImages = document.getElementsByClassName("item-image");
   const itemNames = document.getElementsByClassName("item-name");
   const itemDescriptions = document.getElementsByClassName("item-description");
