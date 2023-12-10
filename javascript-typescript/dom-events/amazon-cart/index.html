@@ -7,29 +7,31 @@
   <body>
     <div class="cart">
       <h1>Shopping Cart</h1>
+      <p id="empty-message"></p>
       <div class="cart-item">
-        <img src="images/nike.webp" alt="Item image" />
+        <img src="" alt="Item image" class="item-image" />
         <div class="item-details">
-          <h2>Item Name</h2>
-          <p>Item Description</p>
-          <p>Price: $99.99</p>
-          <button>Remove from cart</button>
+          <h2 class="item-name">Item Name</h2>
+          <p class="item-description">Item Description</p>
+          <p class="item-price"></p>
+          <button class="remove-btn">Remove from cart</button>
         </div>
       </div>
       <div class="cart-item">
-        <img src="images/adidas.webp" alt="Item image" />
+        <img src="" alt="Item image" class="item-image" />
         <div class="item-details">
-          <h2>Item Name</h2>
-          <p>Item Description</p>
-          <p>Price: $99.99</p>
-          <button>Remove from cart</button>
+          <h2 class="item-name">Item Name</h2>
+          <p class="item-description">Item Description</p>
+          <p class="item-price"></p>
+          <button class="remove-btn">Remove from cart</button>
         </div>
       </div>
       <!-- Repeat .cart-item for each item in the cart -->
-      <div class="cart-total">
-        <h2>Total: $99.99</h2>
-        <button>Proceed to checkout</button>
+      <div id="cart-total">
+        <h3 id="total"></h3>
+        <button id="checkout-btn">Proceed to checkout</button>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -9,20 +9,20 @@ body {
 
 .cart-item {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
-.cart-item img {
+.item-image {
   width: 200px;
   height: 200px;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .item-details {
   flex-grow: 1;
 }
 
-.cart-total {
+#cart-total {
   text-align: right;
   font-size: 1.5em;
   margin-top: 20px;
@@ -30,7 +30,12 @@ body {
 
 button {
   background-color: #f0c14b;
-  border: 1px solid #a88734;
+  border: none;
   padding: 10px 20px;
   margin-top: 10px;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #000000;
+  color: #ffffff;
 }
