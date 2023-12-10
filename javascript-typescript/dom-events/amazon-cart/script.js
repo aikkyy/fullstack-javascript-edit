@@ -5,9 +5,21 @@ async function fetchDataAsync() {
   return data;
 }
 
-// 2. update item details and calculate total price
 let totalPrice = 0;
 
+// 2. update total price
+function updateTotalPrice() {
+  totalPrice = 0;
+  const itemPrices = document.getElementsByClassName("item-price");
+  for (const price of itemPrices) {
+    const priceValue = parseFloat(price.textContent.replace("Price: $", ""));
+    totalPrice += priceValue;
+  }
+  let totalPriceElem = document.getElementById("total");
+  totalPriceElem.innerHTML = `Total Price: $${totalPrice}`;
+}
+
+// 2. update item details
 fetchDataAsync().then((products) => {
   const itemImages = document.getElementsByClassName("item-image");
   const itemNames = document.getElementsByClassName("item-name");
@@ -17,21 +29,14 @@ fetchDataAsync().then((products) => {
   for (let i = 0; i < itemPrices.length; i++) {
     if (products[i]) {
       const product = products[i];
-
-      //update item details
       itemNames[i].textContent = product.title;
       itemDescriptions[i].textContent = product.description;
       itemPrices[i].textContent = `Price: $${product.price}`;
       itemImages[i].src = product.image;
-
-      //calculate total price
-      totalPrice += product.price;
     }
   }
 
-  //update total price
-  let totalPriceElem = document.getElementById("total");
-  totalPriceElem.innerHTML = `Total Price: $${totalPrice}`;
+  updateTotalPrice();
 });
 
 // 3. check if cart is empty
@@ -43,11 +48,12 @@ function checkIfCartIsEmpty() {
     if (checkoutBtn) checkoutBtn.remove();
     if (totalElem) totalElem.remove();
     const emptyMessage = document.getElementById("empty-message");
-    emptyMessage.textContent = "Your cart is empty ☹︎ Keep shopping.";
+    emptyMessage.innerHTML =
+      'Your cart is empty ☹︎ <a href="#">Keep shopping.</a>';
   }
 }
 
-// 4. remove item from cart when clicking remove button
+// 4.remove item from cart when clicking remove button
 const removeBtns = document.getElementsByClassName("remove-btn");
 
 for (const button of removeBtns) {
@@ -55,6 +61,7 @@ for (const button of removeBtns) {
     const itemElem = button.parentElement.parentElement;
     if (itemElem) {
       itemElem.remove();
+      updateTotalPrice();
       checkIfCartIsEmpty();
     }
   });
